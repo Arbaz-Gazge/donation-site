@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Donate to Our Cause</h1>
+        <p>Enter your details and proceed with the donation:</p>
+        
+        <form action="/donate" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="whatsapp">WhatsApp Number (10 digits):</label>
+            <input type="tel" id="whatsapp" name="whatsapp" pattern="\d{10}" maxlength="10" required title="Please enter exactly 10 digits">
+            
+            <label for="amount">Donation Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <button type="submit">Proceed to Donate</button>
+        </form>
+        
+
+        <div class="upi-section">
+            <h2>Donate via UPI</h2>
+            <p>Scan the QR code below or use the UPI ID to make your donation:</p>
+            <img src="upi-qr-code.png" alt="UPI QR Code">
+            <p>UPI ID: your-upi-id@bank</p>
+        </div>
+    </div>
+</body>
+</html>

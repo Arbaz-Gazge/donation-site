@@ -1,0 +1,90 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Donor List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>WhatsApp Number</th>
+                    <th>Donation Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donor in donors %}
+                <tr>
+                    <td>{{ donor[0] }}</td>
+                    <td>{{ donor[1] }}</td>
+                    <td>{{ donor[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/logout"><button>Logout</button></a>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Donor List</h1>
+
+        {% if donors %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>WhatsApp Number</th>
+                    <th>Donation Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donor in donors %}
+                <tr>
+                    <td>{{ donor[0] }}</td>
+                    <td>{{ donor[1] }}</td>
+                    <td>{{ donor[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No donor data available.</p>
+        {% endif %}
+
+        <!-- Button to clear all data -->
+        <button id="clearDataButton">Clear All Data</button>
+
+        <a href="/logout"><button>Logout</button></a>
+    </div>
+
+    <script>
+        // Confirmation dialog before clearing data
+        document.getElementById('clearDataButton').addEventListener('click', function() {
+            var confirmClear = confirm("Are you sure you want to clear all donor data?");
+            if (confirmClear) {
+                // Redirect to the route that handles clearing data
+                window.location.href = "/clear-data";
+            }
+        });
+    </script>
+</body>
+</html>
+
